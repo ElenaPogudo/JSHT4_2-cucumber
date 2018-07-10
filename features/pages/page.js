@@ -3,14 +3,14 @@
 class Page {
 
     get() {
-        return browser.get('https://www.barnesandnoble.com');
+        return browser.get('https://edit.weather.com/');
     }
 
-    goToBooksLink() {
+    searchMyCity() {
         return browser.actions().mouseMove(by.id("topNav1"));
     }
 
-    clickTop100Link() {
+    clickMaps() {
         return browser.findElement(by.linkText("B&N Top 100")).click();
     }
 

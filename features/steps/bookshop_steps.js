@@ -38,7 +38,7 @@ module.exports = function() {
         page.highlightOldPriceAndPercent().then(callback);
     });
 
-    this.Then(/^I should see that the price is "([^"]*)"$/, (expectedPrice, callback) => {
+    this.Then(/^I should see that new price is "([^"]*)"$/, (expectedPrice, callback) => {
         page.getNewPrice().then((text) => {
             expect(text).to.eql(expectedPrice);
         }).then(callback);
