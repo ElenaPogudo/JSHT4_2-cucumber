@@ -1,59 +1,35 @@
+'use strict';
 class Page {
 
     get() {
-        return browser.get('https://edit.weather.com/');
+       return browser.get('https://rupsinthekitchen.com');
     }
 
-    clickOnMaps() {
-        return browser.findElement(by.xpath("//div[@id='mini-panel-header_drilldown_mini_panel']/div/div/div/div/ul/li[2]/a/span")).click();
+    scrollDown() {
+        return browser.executeScript('window.scrollTo(300, 100)');
     }
 
-    // pushOnWeather() {
-    //     return browser.findElement(by.linkText("Weather in Motion®")).click();
-    // }
-
-    // pressPause() {
-    //     return browser.findElement(by.xpath("//div[@id='wx-main']/container-map/div/div/section/p-map/p-map-animation-timeline/animation-controls/button")).click();
-    // }
-
-    // clickBookLink(number) {
-    //     switch (number) {
-    //         case "first": {
-    //             return browser.findElement(by.xpath("//a[contains(text(),'An Absolutely Remarkable Thing (Signed B&N Exclusive Book)')]")).click();
-    //             break;
-    //         }
-    //         case "second": {
-    //             return browser.findElement(by.xpath("//a[contains(text(),'The Hate U Give')]")).click();
-    //             break;
-    //         }
-    //         case "third" : {
-    //             return browser.findElement(by.xpath("//a[contains(text(),'The President Is Missing')]")).click();
-    //             break;
-    //         }
-    //
-    //     }
-    //
-    // }
-    //
-    // scrollToBook(number) {
-    //     switch (number) {
-    //         case "first": {
-    //             break;
-    //         }
-    //         case "second": {
-    //             return browser.executeScript(`window.scrollTo(100,100);`);
-    //             break;
-    //         }
-    //         case "third" : {
-    //             return browser.executeScript(`window.scrollTo(500,500);`);
-    //             break;
-    //         }
-    //     }
-    // }
-
-    highlightLocation() {
-        return this.highlightWithJS(element(by.css("span.location-text.not-truncated")));
+    highlightDoYouKnow() {
+        return browser.highlightWithJS(element(by.xpath("//section[@id='one']/div/div/div/div/header/h2")));
     }
+
+    openDeserts(){
+        return browser.findElement(element(by.css("(//button[@type='button'])[3]"))).click().then(function () {
+            return browser.findElement(element(by.css("//a[contains(text(),'Dessert')]")));
+    })}
+
+    pressRecipes(){
+        return browser.findElement(element(by.css("a.button"))).click();
+    }
+
+    openRecipe(){
+        return browser.findElement(element(by.xpath("//div[@id='page-wrapper']/list/div/div/div[2]/div/div/div[5]/a/h3"))).click();
+    }
+
+    highlightIngAndRec(){
+        return browser.highlightWithJS(element(by.css("div.col-md-12.detail-image"))).then(function () {
+        return browser.highlightWithJS(element(by.xpath("//div[@id='page-wrapper']/detail/div/div/div/div/div/div/div[2]")));
+        })}
 
     highlightWithJS(el) {
         var bg;
